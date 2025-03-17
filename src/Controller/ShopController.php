@@ -35,7 +35,7 @@ final class ShopController extends AbstractController
     {
 
         $clubs = $ClubRepository->findBy([
-            'country' => $id,
+            'league' => $id,
         ]);
         // dd($clubs);
         return $this->render('shop/category.html.twig', [

@@ -3,6 +3,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.row {
+    justify-content: center;
+}
+
 h1 {
     text-align: center;
     margin: 20px 0;
@@ -45,6 +49,7 @@ h1 {
     border: none;
     padding: 10px 10px;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .btn-primary:hover {

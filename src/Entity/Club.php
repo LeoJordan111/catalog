@@ -32,6 +32,9 @@ class Club
     #[ORM\ManyToOne(inversedBy: 'clubs')]
     private ?Country $country = null;
 
+    #[ORM\ManyToOne(inversedBy: 'clubs')]
+    private ?League $league = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,5 +117,17 @@ class Club
         $priceTTC = (0.2 * $this->price) + $this->price;
 
         return $priceTTC;
+    }
+
+    public function getLeague(): ?League
+    {
+        return $this->league;
+    }
+
+    public function setLeague(?League $league): static
+    {
+        $this->league = $league;
+
+        return $this;
     }
 }

@@ -11,10 +11,8 @@
         <div class="card">
             <img src="{{ asset(club.image) }}" alt="{{ club.label }}">
             <div class="card-body">
-                {# <h5 class="card-title">{{ club.label }}</h5> #}
                 <p class="card-text">Prix : {{ club.priceTTC }} Euros (hors taxes: {{ club.price }}Euros)</p>
-                <a href="{{ path('shop_category', {id:club.country.id}) }}" class="btn btn-primary" target="_blank">{{ club.country.label }}</a>
-                {# <p class="card-text">{{ club.id }}</p> #}
+                <a href="{{ path('shop_category', {id:club.league.id}) }}" class="btn btn-primary" target="_blank">{{ club.league.label }}</a>
                 <a href="{{ path('shop_single', {id:club.id}) }}" class="btn btn-primary" target="_blank">Maillot : {{ club.label }}</a>
             </div>
         </div>
