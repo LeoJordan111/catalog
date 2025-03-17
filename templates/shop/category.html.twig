@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magasin{% endblock %}
+
+{% block body %}
+
+
+<h1>La catégorie</h1>
+<br>
+<div class="row">
+    {% for club in clubs %}
+    <div class="col-lg-4 col-md-6">
+        <div class="card">
+            <img src="{{ asset(club.image) }}" alt="{{ club.label }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ club.label }}</h5>
+                <p class="card-text">{{ club.price }} Euros</p>
+                <p class="card-text">Prix : {{ club.priceTTC }} Euros (hors taxes: {{ club.price }}Euros)</p>
+                <p class="card-text">{{ club.country.label }}</p>
+                {# <a href="{{ path('shop_category', {id:club.country.id}) }}" class="btn btn-primary" target="_blank">{{ club.country.label }}</a> #}
+                {# <p class="card-text">{{ club.id }}</p> #}
+                <a href="{{ path('shop_single', {id:club.id}) }}" class="btn btn-primary" target="_blank">Maillot</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

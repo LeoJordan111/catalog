@@ -4,14 +4,27 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        
+        <link href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
         {% block stylesheets %}
         {% endblock %}
 
+        <script defer src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.js') }}"></script>
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            {% include "_partial/nav.html.twig" %}
+            {# <a href="{{ path('shop')}}" class="btn btn-primary" target="_blank">Articles</a>
+            <a href="{{ path('shop_single')}}" class="btn btn-primary" target="_blank">1 Article</a>
+            <a href="{{ path('shop_category')}}" class="btn btn-primary" target="_blank">catégories</a> #}
+        </header>
+
+        {% block body %}
+
+        {% endblock %}
+    </body>
     </body>
 </html>

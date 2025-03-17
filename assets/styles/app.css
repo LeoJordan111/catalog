@@ -1,3 +1,72 @@
 body {
-    background-color: skyblue;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.card {
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+    text-align: center;
+    background: white;
+    padding: 0px;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #333087;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.navbar {
+    background-color: #343a40 !important;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 1rem;
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
 }
