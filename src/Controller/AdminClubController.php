@@ -7,10 +7,14 @@ use App\Form\ClubType;
 use App\Repository\ClubRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class AdminClubController extends AbstractController
 {
@@ -40,7 +44,9 @@ final class AdminClubController extends AbstractController
     #[Route('/admin/add_club', name: 'admin_add_club')]
     public function addClub(
         EntityManagerInterface $entityManager,
-        request $request
+        request $request,
+        SluggerInterface $slugger,
+        #[Autowire('%kernel.project_dir%/public/uploads/brochures')] string $imagesDirectory
     ): Response {
         $club = new Club();
 
@@ -49,6 +55,28 @@ final class AdminClubController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // $club->setCreatedAt(new DateTime()); //Fonctionne
+
+            // @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imageFile->move($imagesDirectory, $newFilename);
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $club->setImage($newFilename);
+            }
+
             $entityManager->persist($club);
             $entityManager->flush();
             return $this->redirectToRoute('admin_club');
@@ -105,11 +133,10 @@ final class AdminClubController extends AbstractController
             return $this->redirectToRoute('admin_club');
         }
 
-
-        // return $this->redirectToRoute('home');
-        return $this->render('admin_club/club_remove.html.twig', [
-            'club' => $club,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('home');
+        // return $this->render('admin_club/club_remove.html.twig', [
+        //     'club' => $club,
+        //     'form' => $form->createView(),
+        // ]);
     }
 }

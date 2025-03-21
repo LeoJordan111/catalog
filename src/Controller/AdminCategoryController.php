@@ -107,10 +107,10 @@ final class AdminCategoryController extends AbstractController
             return $this->redirectToRoute('admin_category');
         }
 
-        // return $this->redirectToRoute('home');
-        return $this->render('admin_category/category_remove.html.twig', [
-            'league' => $league,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('admin_category');
+        // return $this->render('admin_category/category_remove.html.twig', [
+        //     'league' => $league,
+        //     'form' => $form->createView(),
+        // ]);
     }
 }

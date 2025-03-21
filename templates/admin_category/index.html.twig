@@ -36,7 +36,28 @@
                 <a href="{{ path('admin_edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
             </td>
             <td>
-                <a href="{{ path('admin_remove_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Supprimer
+                </button>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Etes-vous sur de vouloir supprimer le championnat : {{ league.label }}
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                          <button type="submit" class="btn btn-primary">Valider</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </td>
         </tr>
     {% endfor %}

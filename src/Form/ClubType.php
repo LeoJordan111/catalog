@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ClubType extends AbstractType
 {
@@ -25,9 +26,17 @@ class ClubType extends AbstractType
                 'label' => 'Année du maillot :',
                 'widget' => 'single_text',
             ])
-            ->add('image', TextType::class, [
+            // ->add('image', TextType::class, [
+            //     'label' => "Lien de l'image :",
+            //     'required' => true,
+            // ])
+            ->add('image', FileType::class, [
                 'label' => "Lien de l'image :",
-                'required' => true,
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
             ])
             ->add('price', NumberType::class, [
                 'label' => 'Prix du maillot :',
