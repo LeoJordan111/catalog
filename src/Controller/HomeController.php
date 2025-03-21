@@ -13,9 +13,11 @@ final class HomeController extends AbstractController
     public function index(ClubRepository $ClubRepository): Response
     {
         $clubs = $ClubRepository->findAll();
+        // $user = $this->getUser();
 
         return $this->render('home/index.html.twig', [
             'clubs' => $clubs,
+            // 'user' => $user,
         ]);
     }
 }

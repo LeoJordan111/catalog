@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <a class="nav-link active" aria-current="page" href="{{path('admin_category')}}" target="_blank">Championnat</a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link active" aria-current="page" href="{{path('admin_club')}}" target="_blank">Club</a>
+    </li>
+    {# <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li> #}
+</ul>
+
+{% endblock %}

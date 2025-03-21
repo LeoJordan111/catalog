@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ league.label }}{% endblock %}
+
+{% block body %}
+<br><br>
+<table>
+    <th>
+        Championnat
+    </th>
+        <tr>
+            <td>
+                {{ league.label }}
+            </td> 
+        </tr>
+</table>
+
+
+{% endblock %}

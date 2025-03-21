@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Championnat{% endblock %}
+
+{% block body %}
+
+<br><br>
+<a href="{{ path('add_category') }}" class="btn btn-primary" target="_blank">Ajouter un championnat</a>
+<br>
+<table>
+    <th>
+        Championnats
+    </th>
+
+    <th>
+       Voir
+    </th>
+
+    <th>
+        Modifier
+     </th>
+
+     <th>
+        Supprimer
+     </th>
+    
+    {% for league in leagues %}
+        <tr>
+            <td>
+                {{ league.label }}
+            </td> 
+            <td>
+                <a href="{{ path('admin_category_item', {id:league.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+            </td>
+            <td>
+                <a href="{{ path('edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+            </td>
+            <td>
+                <a href="{{ path('remove_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Supprimer le championnat{% endblock %}
+
+{% block body %}
+
+    <h1>Entité : {{ league.label }}</h1>
+
+    <br>
+    {{ form_start(form) }}
+
+        {{ form_row(form.label) }}
+        <button type="submit">Soumettre</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

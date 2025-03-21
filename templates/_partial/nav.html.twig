@@ -11,6 +11,23 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{path('home')}}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{path('app_login')}}" target="_blank">Se connecter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{path('app_logout')}}">Se déconnecter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{path('app_register')}}" target="_blank">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    {% if app.user %}
+                        <p class="nav-link active" aria-current="page">{{ app.user.email }}</p>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{path('admin')}}" target="_blank">Admin</a>
+                </li>
                 </ul>
         </div>
     </div>

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Club{% endblock %}
+
+{% block body %}
+<br><br>
+<a href="{{ path('admin_add_club') }}" class="btn btn-primary" target="_blank">Ajouter un club</a>
+<br>
+<table>
+    <th>
+        Championnats
+    </th>
+
+    <th>
+       Voir
+    </th>
+
+    <th>
+        Modifier
+     </th>
+
+     <th>
+        Supprimer
+     </th>
+    
+    {% for club in clubs %}
+        <tr>
+            <td>
+                {{ club.label }}
+            </td> 
+            <td>
+                <a href="{{ path('admin_show_club', {id:club.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+            </td>
+            <td>
+                <a href="{{ path('admin_edit_club', {id:club.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+            </td>
+            <td>
+                <a href="{{ path('admin_remove_club', {id:club.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

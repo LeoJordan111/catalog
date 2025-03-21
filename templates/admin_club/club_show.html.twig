@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ club.label }}{% endblock %}
+
+{% block body %}
+<br><br>
+<table>
+    <th>
+        Club
+    </th>
+        <tr>
+            <td>
+                {{ club.label }}
+            </td> 
+            {# <td>
+                <a class="nav-link active" aria-current="page" href="{{path('edit_category')}}" target="_blank">Modifier</a>
+            </td>
+            <td>
+                
+            </td> #}
+        </tr>
+</table>
+
+
+{% endblock %}
