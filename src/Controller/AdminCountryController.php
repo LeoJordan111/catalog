@@ -51,6 +51,7 @@ final class AdminCountryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($country);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_country');
         }
 
         return $this->render('admin_country/country_add.html.twig', [
@@ -75,6 +76,7 @@ final class AdminCountryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($country);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_country');
         }
 
         return $this->render('admin_country/country_edit.html.twig', [
@@ -99,6 +101,7 @@ final class AdminCountryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->remove($country);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_country');
         }
 
         return $this->render('admin_country/country_remove.html.twig', [

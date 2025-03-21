@@ -22,6 +22,7 @@ class ClubType extends AbstractType
                 'required' => true,
             ])
             ->add('yearAt', null, [
+                'label' => 'Année du maillot :',
                 'widget' => 'single_text',
             ])
             ->add('image', TextType::class, [
@@ -32,14 +33,13 @@ class ClubType extends AbstractType
                 'label' => 'Prix du maillot :',
                 'required' => true,
             ])
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('country', EntityType::class, [
+                'label' => 'Pays du club :',
                 'class' => Country::class,
                 'choice_label' => 'label',
             ])
             ->add('league', EntityType::class, [
+                'label' => 'Championnat du club :',
                 'class' => League::class,
                 'choice_label' => 'label',
             ])

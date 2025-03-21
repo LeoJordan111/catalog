@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Club;
 use App\Form\ClubType;
 use App\Repository\ClubRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,8 +48,10 @@ final class AdminClubController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $club->setCreatedAt(new DateTime()); //Fonctionne
             $entityManager->persist($club);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_club');
         }
 
         return $this->render('admin_club/club_add.html.twig', [
@@ -73,6 +76,7 @@ final class AdminClubController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($club);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_club');
         }
 
         return $this->render('admin_club/club_add.html.twig', [
@@ -98,6 +102,7 @@ final class AdminClubController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->remove($club);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_club');
         }
 
 

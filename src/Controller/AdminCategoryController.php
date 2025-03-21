@@ -51,6 +51,7 @@ final class AdminCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($league);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_category');
         }
 
         return $this->render('admin_category/category_add.html.twig', [
@@ -75,6 +76,7 @@ final class AdminCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($league);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_category');
         }
 
         return $this->render('admin_category/category_edit.html.twig', [
@@ -102,6 +104,7 @@ final class AdminCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->remove($league);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_category');
         }
 
         // return $this->redirectToRoute('home');
