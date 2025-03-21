@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste pays{% endblock %}
+
+{% block body %}
+
+<br><br>
+    <a href="{{ path('admin_add_country') }}" class="btn btn-primary" target="_blank">Ajouter un pays</a>
+<br>
+<table>
+    <th>
+        Pays
+    </th>
+
+    <th>
+       Voir
+    </th>
+
+    <th>
+        Modifier
+     </th>
+
+     <th>
+        Supprimer
+     </th>
+    
+    {% for country in countries %}
+        <tr>
+            <td>
+                {{ country.label }}
+            </td> 
+            <td>
+                <a href="{{ path('admin_show_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+            </td>
+            <td>
+                <a href="{{ path('admin_edit_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+            </td>
+            <td>
+                <a href="{{ path('admin_remove_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

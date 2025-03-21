@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ country.label }}{% endblock %}
+
+{% block body %}
+<br><br>
+<table>
+    <th>
+        Pays
+    </th>
+        <tr>
+            <td>
+                {{ country.label }}
+            </td> 
+        </tr>
+</table>
+
+
+{% endblock %}

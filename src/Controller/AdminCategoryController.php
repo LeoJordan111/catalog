@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-// #[Route('/admin/category')]
 final class AdminCategoryController extends AbstractController
 {
     #[Route('/admin/category', name: 'admin_category')]
@@ -25,7 +24,7 @@ final class AdminCategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/category/{id}', name: 'admin_category_item')]
+    #[Route('/admin/category/{id}', name: 'admin_show_category')]
     public function show(
         int $id,
         LeagueRepository $leagueRepository
@@ -38,11 +37,12 @@ final class AdminCategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/add_category', name: 'add_category')]
+    #[Route('/admin/add_category', name: 'admin_add_category')]
     public function addCategory(
         EntityManagerInterface $entityManager,
         request $request
     ): Response {
+
         $league = new League();
 
         $form = $this->createForm(LeagueType::class, $league);
@@ -59,9 +59,7 @@ final class AdminCategoryController extends AbstractController
         ]);
     }
 
-
-
-    #[Route('/admin/edit_category/{id}', name: 'edit_category')]
+    #[Route('/admin/edit_category/{id}', name: 'admin_edit_category')]
     public function editCategory(
         int $id,
         EntityManagerInterface $entityManager,
@@ -87,7 +85,7 @@ final class AdminCategoryController extends AbstractController
 
 
 
-    #[Route('/admin/remove_category/{id}', name: 'remove_category')]
+    #[Route('/admin/remove_category/{id}', name: 'admin_remove_category')]
     public function removeCategory(
         int $id,
         EntityManagerInterface $entityManager,
@@ -102,7 +100,7 @@ final class AdminCategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($league);
+            $entityManager->remove($league);
             $entityManager->flush();
         }
 

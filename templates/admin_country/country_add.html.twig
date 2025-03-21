@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Ajout d'un pays{% endblock %}
+
+{% block body %}
+<br>
+{{ form_start(form) }}
+
+    {{ form_row(form.label) }}
+    <button type="submit">Soumettre</button>
+
+{{ form_end(form) }}
+
+{% endblock %}

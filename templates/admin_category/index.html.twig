@@ -5,7 +5,7 @@
 {% block body %}
 
 <br><br>
-<a href="{{ path('add_category') }}" class="btn btn-primary" target="_blank">Ajouter un championnat</a>
+<a href="{{ path('admin_add_category') }}" class="btn btn-primary" target="_blank">Ajouter un championnat</a>
 <br>
 <table>
     <th>
@@ -30,13 +30,13 @@
                 {{ league.label }}
             </td> 
             <td>
-                <a href="{{ path('admin_category_item', {id:league.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+                <a href="{{ path('admin_show_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
             </td>
             <td>
-                <a href="{{ path('edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+                <a href="{{ path('admin_edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
             </td>
             <td>
-                <a href="{{ path('remove_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
+                <a href="{{ path('admin_remove_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Supprimer</a>
             </td>
         </tr>
     {% endfor %}
