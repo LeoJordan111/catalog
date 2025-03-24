@@ -4,62 +4,69 @@
 
 {% block body %}
 
+{% include "_partial/leftSideBar.html.twig" %}
+
 <br><br>
-    <a href="{{ path('admin_add_country') }}" class="btn btn-primary" target="_blank">Ajouter un pays</a>
-<br>
-<table>
-    <th>
-        Pays
-    </th>
+        <div class="col py-3">
 
-    <th>
-       Voir
-    </th>
+          <a href="{{ path('admin_add_country') }}" class="btn btn-primary" target="_blank">Ajouter un pays</a>
+      <br>
+      <table>
+          <th>
+              Pays
+          </th>
 
-    <th>
-        Modifier
-     </th>
+          <th>
+            Voir
+          </th>
 
-     <th>
-        Supprimer
-     </th>
-    
-    {% for country in countries %}
-        <tr>
-            <td>
-                {{ country.label }}
-            </td> 
-            <td>
-                <a href="{{ path('admin_show_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
-            </td>
-            <td>
-                <a href="{{ path('admin_edit_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Supprimer
-                </button>
-                  
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <th>
+              Modifier
+          </th>
+
+          <th>
+              Supprimer
+          </th>
+          
+          {% for country in countries %}
+              <tr>
+                  <td>
+                      {{ country.label }}
+                  </td> 
+                  <td>
+                      <a href="{{ path('admin_show_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+                  </td>
+                  <td>
+                      <a href="{{ path('admin_edit_country', {id:country.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+                  </td>
+                  <td>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Supprimer
+                      </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                Etes-vous sur de vouloir supprimer le championnat : {{ country.label }}
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="modal-body">
-                          Etes-vous sur de vouloir supprimer le championnat : {{ country.label }}
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                          <button type="submit" class="btn btn-primary">Valider</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+                  </td>
+              </tr>
+          {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

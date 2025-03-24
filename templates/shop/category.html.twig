@@ -3,6 +3,8 @@
 {% block title %}Magasin{% endblock %}
 
 {% block body %}
+{% include "_partial/nav.html.twig" %}
+
 <div class="row">
     {% for club in clubs %}
     <div class="col-lg-4 col-md-6">

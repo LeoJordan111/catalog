@@ -5,16 +5,19 @@
 
 {% block body %}
 
-    <h1>Entité : {{ league.label }}</h1>
+{% include "_partial/leftSideBar.html.twig" %}
 
-    <br>
-    {{ form_start(form) }}
+      <div class="col py-3">
+        <h1>Entité : {{ league.label }}</h1>
+
+        <br>
+        {{ form_start(form) }}
 
         {{ form_row(form.label) }}
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Soumettre
-        </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Soumettre
+          </button>
           
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,6 +38,9 @@
             </div>
           </div>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+      </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -4,23 +4,29 @@
 {% block title %}Ajout d'un club{% endblock %}
 
 {% block body %}
-<br>
-{{ form_start(form) }}
 
-    {{ form_row(form.label) }}
-    <br>
-    {{ form_row(form.image) }}
-    {{ form_row(form.price) }}
-    <br>
-    {{ form_row(form.country) }}
-    <br>
-    {{ form_row(form.league) }}
-    <br>
-    {{ form_row(form.yearAt) }}
+{% include "_partial/leftSideBar.html.twig" %}
+        <br>
+        <div class="col py-3">
+        
+          {{ form_start(form) }}
 
+              {{ form_row(form.label) }}
+              <br>
+              {{ form_row(form.image) }}
+              {{ form_row(form.price) }}
+              <br>
+              {{ form_row(form.country) }}
+              <br>
+              {{ form_row(form.league) }}
+              <br>
+              {{ form_row(form.yearAt) }}
 
-    <button type="submit">Soumettre</button>
+              <button type="submit">Soumettre</button>
 
-{{ form_end(form) }}
+          {{ form_end(form) }}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

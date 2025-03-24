@@ -4,17 +4,25 @@
 {% block title %}{{ country.label }}{% endblock %}
 
 {% block body %}
+
+{% include "_partial/leftSideBar.html.twig" %}
+
 <br><br>
-<table>
-    <th>
-        Pays
-    </th>
-        <tr>
-            <td>
-                {{ country.label }}
-            </td> 
-        </tr>
-</table>
+        <div class="col py-3">
+            <table>
+                <th>
+                    Pays
+                </th>
+                    <tr>
+                        <td>
+                            {{ country.label }}
+                        </td> 
+                    </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
 
 
 {% endblock %}

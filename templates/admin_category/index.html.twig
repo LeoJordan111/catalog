@@ -2,64 +2,92 @@
 
 {% block title %}Liste Championnat{% endblock %}
 
+
+
 {% block body %}
 
-<br><br>
-<a href="{{ path('admin_add_category') }}" class="btn btn-primary" target="_blank">Ajouter un championnat</a>
-<br>
-<table>
-    <th>
-        Championnats
-    </th>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <ul class="collapse show nav flex-column ms-1">
+                  <li class="nav-item">
+                    <a href="{{path('home')}}" class="nav-link align-middle px-0">Home</a>
+                  </li>
+                  <li class="w-100">
+                    <a href="{{ path('admin_category') }}" class="nav-link px-0" target="_blank">Championnat</a>
+                  </li>
+                  <li>
+                    <a href="{{path('admin_country')}}" class="nav-link px-0" target="_blank">Pays</span></a>
+                  </li>
+                  <li>
+                    <a href="{{path('admin_club')}}" class="nav-link px-0" target="_blank">Club</span></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
 
-    <th>
-       Voir
-    </th>
+      <div class="col py-3">
+        <h3><a href="{{ path('admin_add_category') }}" class="btn btn-primary" target="_blank">Ajouter un championnat</a></h3>
+        <br><br>
+        <table>
+            <th>
+                Championnats
+            </th>
 
-    <th>
-        Modifier
-     </th>
+            <th>
+              Voir
+            </th>
 
-     <th>
-        Supprimer
-     </th>
-    
-    {% for league in leagues %}
-        <tr>
-            <td>
-                {{ league.label }}
-            </td> 
-            <td>
-                <a href="{{ path('admin_show_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
-            </td>
-            <td>
-                <a href="{{ path('admin_edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Supprimer
-                </button>
-                  
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          Etes-vous sur de vouloir supprimer le championnat : {{ league.label }}
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                          <button type="submit" class="btn btn-primary">Valider</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+            <th>
+                Modifier
+            </th>
+
+            <th>
+                Supprimer
+            </th>
+            
+            {% for league in leagues %}
+                <tr>
+                    <td>
+                        {{ league.label }}
+                    </td> 
+                    <td>
+                        <a href="{{ path('admin_show_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Voir</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_edit_category', {id:league.id}) }}" class="btn btn-primary" target="_blank">Modifier</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Supprimer
+                        </button>
+                          
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  Etes-vous sur de vouloir supprimer le championnat : {{ league.label }}
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                  <button type="submit" class="btn btn-primary">Valider</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+      </div>
+  </div>
+</div>
+
+
 {% endblock %}
