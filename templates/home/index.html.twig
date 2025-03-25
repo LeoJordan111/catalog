@@ -1,23 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Acceuil{% endblock %} {% block
+body %}
 
-{% block title %}Acceuil{% endblock %}
-
-{% block body %}
-{% include "_partial/nav.html.twig" %}
-
-<br>
-<div class="row">
+<br />
+<div class="container-fluid">
+  <div class="row">
     {% for club in clubs %}
     <div class="col-lg-4 col-md-6">
-        <div class="card">
-            <img src="{{ asset(club.image) }}" alt="{{ club.label }}">
-            <div class="card-body">
-                <p class="card-text">Prix : {{ club.priceTTC }} Euros (hors taxes: {{ club.price }}Euros)</p>
-                <a href="{{ path('shop_category', {id:club.league.id}) }}" class="btn btn-primary" target="_blank">{{ club.league.label }}</a>
-                <a href="{{ path('shop_single', {id:club.id}) }}" class="btn btn-primary" target="_blank">Maillot : {{ club.label }}</a>
-            </div>
+      <div class="card">
+        <img src="{{ asset(club.image) }}" alt="{{ club.label }}" />
+        <div class="card-body">
+          <p class="card-text">
+            Année du maillot : {{ club.yearAt | date('Y') }}
+          </p>
+          <p class="card-text">
+            Prix : {{ club.priceTTC | euro }} (hors taxes:
+            {{ club.price | euro }})
+          </p>
+          <a
+            href="{{ path('shop_category', { id: club.league.id }) }}"
+            class="btn btn-primary"
+            target="_blank"
+            >{{ club.league.label }}</a
+          >
+          <a
+            href="{{ path('shop_single', { id: club.id }) }}"
+            class="btn btn-primary"
+            target="_blank"
+            >Maillot : {{ club.label }}</a
+          >
         </div>
+      </div>
     </div>
     {% endfor %}
+  </div>
 </div>
 {% endblock %}

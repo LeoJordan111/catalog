@@ -1,23 +1,29 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Magasin{% endblock %}
-
-{% block body %}
-{% include "_partial/nav.html.twig" %}
+{% extends 'base.html.twig' %} {% block title %}Magasin{% endblock %} {% block
+body %}
 
 <h1>{{ club.label }}</h1>
-<br><br>
+<br /><br />
 <div class="row">
-    <div class="col-lg-4 col-md-6" style="margin-bottom:10px">
-        <div class="card">
-            <img src="{{ asset(club.image) }}">
-            <div class="card-body">
-                {# <h5 class="card-title">{{ club.label }}</h5> #}
-                <p class="card-text">Prix : {{ club.priceTTC }} Euros (hors taxes: {{ club.price }}Euros)</p>
-                <a href="{{ path('shop_category', {id:club.league.id}) }}" class="btn btn-primary" target="_blank">{{ club.league.label }}</a>
-            </div>
-        </div>
+  <div class="col-lg-4 col-md-6" style="margin-bottom: 10px">
+    <div class="card">
+      <img src="{{ asset(club.image) }}" />
+      <div class="card-body">
+        <p class="card-text">
+          Année du maillot : {{ club.yearAt | date('Y') }}
+        </p>
+        <p class="card-text">
+          Prix : {{ club.priceTTC | euro }} (hors taxes:
+          {{ club.price | euro }})
+        </p>
+        <a
+          href="{{ path('shop_category', { id: club.league.id }) }}"
+          class="btn btn-primary"
+          target="_blank"
+          >{{ club.league.label }}</a
+        >
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock %}

@@ -60,7 +60,7 @@ final class AdminCategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/edit_category/{id}', name: 'admin_edit_category')]
+    #[Route('/admin/edit_category/{id}', name: 'admin_edit_category')] // exemple: /admin/category/edit/{id}
     public function editCategory(
         int $id,
         EntityManagerInterface $entityManager,
